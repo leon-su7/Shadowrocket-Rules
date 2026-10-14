@@ -1,0 +1,60 @@
+# NAME: Amazon
+# DESC: Amazon 商城、账号、支付、卖家后台和静态资源直连规则
+# SOURCE: https://sell.amazon.com/global-selling
+# SOURCE: https://affiliate-program.amazon.com/creatorsapi/docs/en-us/concepts/common-request-headers-and-parameters
+# SOURCE: https://www.amazon.cn/
+# SOURCE: https://pay.amazon.com/signin
+# SOURCE: https://www.primevideo.com/
+
+# Amazon 各地区站点；后缀规则同时覆盖登录、支付和卖家后台等子域名
+DOMAIN-SUFFIX,amazon.ae
+DOMAIN-SUFFIX,amazon.ca
+DOMAIN-SUFFIX,amazon.cn
+DOMAIN-SUFFIX,amazon.co.jp
+DOMAIN-SUFFIX,amazon.co.kr
+DOMAIN-SUFFIX,amazon.co.th
+DOMAIN-SUFFIX,amazon.co.uk
+DOMAIN-SUFFIX,amazon.co.za
+DOMAIN-SUFFIX,amazon.com
+DOMAIN-SUFFIX,amazon.com.au
+DOMAIN-SUFFIX,amazon.com.be
+DOMAIN-SUFFIX,amazon.com.br
+DOMAIN-SUFFIX,amazon.com.mx
+DOMAIN-SUFFIX,amazon.com.sg
+DOMAIN-SUFFIX,amazon.com.tr
+DOMAIN-SUFFIX,amazon.com.tw
+DOMAIN-SUFFIX,amazon.de
+DOMAIN-SUFFIX,amazon.eg
+DOMAIN-SUFFIX,amazon.es
+DOMAIN-SUFFIX,amazon.fr
+DOMAIN-SUFFIX,amazon.ie
+DOMAIN-SUFFIX,amazon.in
+DOMAIN-SUFFIX,amazon.it
+DOMAIN-SUFFIX,amazon.nl
+DOMAIN-SUFFIX,amazon.pl
+DOMAIN-SUFFIX,amazon.sa
+DOMAIN-SUFFIX,amazon.se
+DOMAIN-SUFFIX,amazon.sg
+DOMAIN-SUFFIX,amazon.vn
+
+# Amazon 商品分享短链接
+DOMAIN-SUFFIX,a.co
+DOMAIN-SUFFIX,amzn.com
+DOMAIN-SUFFIX,amzn.to
+DOMAIN-SUFFIX,amzn.eu
+DOMAIN-SUFFIX,amzn.asia
+
+# Amazon 自有图片、静态资源及应用资源
+DOMAIN-SUFFIX,images-amazon.com
+DOMAIN-SUFFIX,media-amazon.com
+DOMAIN-SUFFIX,ssl-images-amazon.com
+DOMAIN-SUFFIX,ssl-images-amazon.cn
+DOMAIN-SUFFIX,amazon.dev
+
+# Amazon Pay 的专用静态资源，仅匹配其子域名
+DOMAIN-SUFFIX,amazon-pay.brightspotcdn.com
+
+# Amazon Prime Video
+DOMAIN-SUFFIX,primevideo.com
+
+# amazonaws.com 和 cloudfront.net 为共享云服务域名，不整体设为直连，避免影响第三方服务。
