@@ -1,3 +1,7 @@
+# NAME: AI
+# DESC: Apple Intelligence、ChatGPT、Claude、Copilot、Grok、OpenRouter、Perplexity
+# NOTE: Gemini、AI Studio 和 NotebookLM 在 Google.list 中维护，使用谷歌服务策略。
+
 # > Apple Intelligence / Siri / Search / Geo
 # Official core endpoints: https://support.apple.com/101555
 # Extended endpoints keep Apple AI region checks and relay bootstrap on one exit

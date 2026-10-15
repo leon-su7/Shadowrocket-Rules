@@ -1,11 +1,9 @@
 # NAME: ApplePush
 # AUTHOR: LingJingMaster
-# UPDATED: 2026-05-02
-# DOMAIN-SUFFIX: 4
-# TOTAL: 4
+# UPDATED: 2026-10-15
+# DOMAIN-SUFFIX: 1
+# TOTAL: 1
 
 # > Apple Push Notification service
+# 后缀规则已覆盖 gateway、api、sandbox 等所有子域名。
 DOMAIN-SUFFIX,push.apple.com
-DOMAIN-SUFFIX,gateway.push.apple.com
-DOMAIN-SUFFIX,api.push.apple.com
-DOMAIN-SUFFIX,sandbox.push.apple.com

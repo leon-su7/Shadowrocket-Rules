@@ -39,7 +39,6 @@ DOMAIN-SUFFIX,futuchain.com
 DOMAIN-SUFFIX,futustatic.com
 DOMAIN-SUFFIX,fututrade.com
 DOMAIN-SUFFIX,fututrustee.com
-DOMAIN-SUFFIX,cdn.futustatic.com
 DOMAIN-SUFFIX,qtlcdn.com
 
 # Moomoo - app and account services
@@ -53,16 +52,7 @@ DOMAIN-SUFFIX,9oju31.launches.appsflyersdk.com
 DOMAIN-SUFFIX,sgqt0j.launches.appsflyersdk.com
 DOMAIN,cg.play-analytics.com
 
-# Futu / Moomoo - exact API, quote, trading, support, and download endpoints
-DOMAIN,cdn.futustatic.com
-DOMAIN,qtcard.futunn.com
-DOMAIN,qtcardfthk.futufin.com
-DOMAIN,openapi.futunn.com
-DOMAIN,api.futunn.com
-DOMAIN,api5.futunn.com
-DOMAIN,trade.futunn.com
-DOMAIN,support.futunn.com
-DOMAIN,download.futunn.com
+# futunn.com、futufin.com 和 futustatic.com 的后缀规则已覆盖 API、行情、交易及下载子域名。
 
 # Futu / Moomoo - CIDR ranges, mostly trading, quotes, and app backend endpoints
 IP-CIDR,1.14.242.0/23,no-resolve
@@ -134,8 +124,6 @@ IP-CIDR,43.132.138.67/32,no-resolve
 # Longbridge - API endpoints and root domains
 DOMAIN-SUFFIX,lbctrl.com
 DOMAIN-SUFFIX,lbkrs.com
-DOMAIN-SUFFIX,api.lbkrs.com
-DOMAIN-SUFFIX,api-gl.lbkrs.com
 DOMAIN-SUFFIX,wbrks.com
 
 # Longbridge - official domains and app services
@@ -150,12 +138,7 @@ DOMAIN-SUFFIX,longbridgehk.com
 DOMAIN-SUFFIX,longportapp.cn
 DOMAIN-SUFFIX,longportapp.com
 
-# Longbridge - exact quote, trade, and OpenAPI endpoints
-DOMAIN,quote.longbridge.global
-DOMAIN,trade.longportapp.com
-DOMAIN,openapi.longbridge.com
-DOMAIN,openapi-quote.longbridge.com
-DOMAIN,openapi-trade.longbridge.com
+# Longbridge - additional OpenAPI endpoints not covered by the suffix rules above
 DOMAIN,openapi.longbridge.cn
 DOMAIN,openapi-quote.longbridge.cn
 DOMAIN,openapi-trade.longbridge.cn
@@ -187,11 +170,6 @@ DOMAIN-SUFFIX,zhijianfengyi.com
 DOMAIN-SUFFIX,snowball-x.com
 DOMAIN-SUFFIX,snowballsecurities.com
 DOMAIN-SUFFIX,snbsecurities.com
-DOMAIN,cn.snowball-x.com
-DOMAIN,www.snowballsecurities.com
-DOMAIN,open.snowballsecurities.com
-DOMAIN,openapi.snbsecurities.com
-DOMAIN,sandbox.snbsecurities.com
 
 # Interactive Brokers
 DOMAIN-SUFFIX,interactivebrokers.com
