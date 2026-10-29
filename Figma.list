@@ -1,0 +1,56 @@
+# NAME: Figma
+# DESC: Figma、FigJam、Slides、Buzz、Make、Sites、Weave、登录验证及资源上传下载
+# UPDATED: 2026-10-29
+# SOURCE: https://help.figma.com/hc/en-us/articles/19424714305943-Adjust-your-network-settings
+# SOURCE: https://help.figma.com/hc/en-us/articles/360038511153-Create-a-new-file
+# SOURCE: https://www.figma.com/login
+# SOURCE: https://www.figma.com/webpack-artifacts/assets/226-de48bd7611c06daa.min.js
+
+# 主站、API、WebSocket 协作、MCP、桌面更新及自有 CDN；后缀覆盖全部子域名。
+# figma.site 同时覆盖 makeproxy-c / makeproxy-m；figma.com 包含 s3-alpha 等资源域名。
+DOMAIN-SUFFIX,figma.com
+DOMAIN-SUFFIX,figma.site
+DOMAIN-SUFFIX,figma.app
+DOMAIN-SUFFIX,figmaweave.com
+DOMAIN-SUFFIX,weavy.ai
+
+# Figma for Government
+DOMAIN-SUFFIX,figma-gov.com
+DOMAIN-SUFFIX,figma-gov.site
+
+# 官方新建文件快捷入口
+DOMAIN-SUFFIX,figma.new
+DOMAIN-SUFFIX,figjam.new
+DOMAIN-SUFFIX,flides.new
+DOMAIN-SUFFIX,buzz.new
+
+# 官方网络清单中的验证码、WAF 和 Make 代码依赖；这些域名也服务于其他网站。
+DOMAIN-SUFFIX,arkoselabs.com
+DOMAIN-SUFFIX,awswaf.com
+DOMAIN-SUFFIX,esm.sh
+DOMAIN-SUFFIX,jsdelivr.net
+DOMAIN-SUFFIX,prodregistryv2.org
+
+# 公开应用配置中的 Figma 专用 Firebase 项目与错误报告端点
+DOMAIN,figma-production.firebaseapp.com
+DOMAIN,figma-production.appspot.com
+DOMAIN,o22594.ingest.us.sentry.io
+
+# 公开应用配置中当前使用的 Sites 模板预览主机
+DOMAIN,afar-pogo-speak.preview.site
+DOMAIN,capri-divide-roast.preview.site
+DOMAIN,prism-pound-acorn.preview.site
+DOMAIN,resize-yearn-fried.preview.site
+
+# Figma 专用 S3 桶：图片、API 导出、评论附件、视频、AI 聊天、剪贴板、社区图片、字体及 Make 代码导入。
+# 与公开客户端的网络检测一样按专用桶名识别；.s3 关键字覆盖区域、加速和双栈等端点变体。
+# 例如 figma-videos-production.s3-accelerate.amazonaws.com；不整体匹配 amazonaws.com / cloudfront.net。
+DOMAIN-KEYWORD,figma-alpha.s3
+DOMAIN-KEYWORD,figma-alpha-api.s3
+DOMAIN-KEYWORD,figma-file-comment-attachments-production.s3
+DOMAIN-KEYWORD,figma-videos-production.s3
+DOMAIN-KEYWORD,figma-ai-chat-message-content-production.s3
+DOMAIN-KEYWORD,figma-clipboard-data-production.s3
+DOMAIN-KEYWORD,figma-hubfile-images-production.s3
+DOMAIN-KEYWORD,figma-fonts-private-production.s3
+DOMAIN-KEYWORD,figma-code-ds-import-production.s3

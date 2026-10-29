@@ -2,7 +2,7 @@
 
 [![配置校验](https://github.com/leon-su7/Shadowrocket-Rules/actions/workflows/validate.yml/badge.svg)](https://github.com/leon-su7/Shadowrocket-Rules/actions/workflows/validate.yml)
 
-个人维护的 Shadowrocket 配置，覆盖 Amazon、AI、Google、Apple、邮件、香港银行与券商等服务。基于 [LingJingMaster/Shadowrocket-Rules](https://github.com/LingJingMaster/Shadowrocket-Rules) 整理，当前配置及自维护规则均从本仓库更新。
+个人维护的 Shadowrocket 配置，覆盖 Amazon、Figma、AI、Google、Apple、邮件、香港银行与券商等服务。基于 [LingJingMaster/Shadowrocket-Rules](https://github.com/LingJingMaster/Shadowrocket-Rules) 整理，当前配置及自维护规则均从本仓库更新。
 
 本项目提供分流规则，不包含代理节点或订阅。
 
@@ -30,6 +30,7 @@
 | --- | --- | --- |
 | 节点选择 | `PROXY` | 使用客户端当前选择的代理节点 |
 | Amazon | `DIRECT` | 固定直连，优先级最高 |
+| Figma | `PROXY` | 固定代理，覆盖 Design、FigJam、Slides、Buzz、Make、Sites、Weave 及资源上传下载 |
 | DNS 防泄露 | `REJECT` | 拦截所引用规则集收录的 HTTPDNS 地址 |
 | AI 服务 | 台湾节点 | ChatGPT、Claude、Apple Intelligence、Copilot、Grok 等；可切换美国等策略 |
 | 谷歌服务 | 节点选择 | 包含 Gemini、AI Studio、NotebookLM |
@@ -49,11 +50,12 @@
 `[Rule]` 按顺序匹配，专用规则应放在宽泛规则之前：
 
 1. Amazon 固定直连。
-2. 自定义域名、微信、局域网域名、国内 AI，以及保留的端口和 IP 特例。
-3. HTTPDNS、邮件、YouTube 翻译接口与 YouTube 规则。
-4. Google、AI，以及哔哩哔哩、局域网、Telegram、代码托管、Microsoft 等服务。
-5. 香港银行、券商、苹果推送与 Apple 规则。
-6. China、Global、`GEOIP,CN` 和最后的 `FINAL`。
+2. Figma 及其网络依赖固定代理。
+3. 自定义域名、微信、局域网域名、国内 AI，以及保留的端口和 IP 特例。
+4. HTTPDNS、邮件、YouTube 翻译接口与 YouTube 规则。
+5. Google、AI，以及哔哩哔哩、局域网、Telegram、代码托管、Microsoft 等服务。
+6. 香港银行、券商、苹果推送与 Apple 规则。
+7. China、Global、`GEOIP,CN` 和最后的 `FINAL`。
 
 YouTube 必须位于 Google 之前，避免 `googlevideo.com` 等流量被 Google 的域名关键字规则提前匹配。邮件需位于 Google 和 Apple 之前；AI 需位于 Microsoft 和 Apple 之前；苹果推送需位于 Apple 之前。
 
@@ -63,6 +65,7 @@ YouTube 必须位于 Google 之前，避免 `googlevideo.com` 等流量被 Googl
 | --- | --- |
 | [Shadowrocket.conf](Shadowrocket.conf) | 主配置、DNS、策略组和分流顺序 |
 | [Amazon.list](Amazon.list) | Amazon 各地区商城、账号、支付、卖家后台、商品短链接、静态资源与 Prime Video |
+| [Figma.list](Figma.list) | Figma 官方网络清单、自有域名、快捷入口、验证码、Make 依赖及专用资源桶 |
 | [AI.list](AI.list) | Apple Intelligence、ChatGPT、Claude、Copilot、Grok、OpenRouter、Perplexity |
 | [Google.list](Google.list) | Google 通用服务及 Gemini、AI Studio、NotebookLM 等 |
 | [Apple.list](Apple.list) | Apple、iCloud、CloudKit、CDN 与相关地址段 |
@@ -86,6 +89,10 @@ YouTube 必须位于 Google 之前，避免 `googlevideo.com` 等流量被 Googl
 - Google 中国域名重写只匹配 `g.cn`、`google.cn` 及其 `www` 主机。配置不附带 MITM 证书，HTTPS 重写需要在客户端另行配置。银行列表中按 HTTPS 路径匹配的 `URL-REGEX` 同样依赖客户端能够读取相应 URL。
 
 Amazon 的 `amazonaws.com` 和 `cloudfront.net` 属于共享云服务域名，未整体加入直连列表，避免影响第三方服务。Amazon 站点、支付和视频的直连策略不改变服务自身的地区限制。
+
+Figma 清单于 2026-10-29 核对官方网络要求和公开客户端配置，涵盖截图中的全部域名，并补充 API 导出、字体、剪贴板、社区图片、Make 代码导入等资源。主域名使用后缀规则覆盖全部子域名；专用 S3 桶使用包含 `.s3` 的桶名关键字覆盖不同区域、加速和双栈端点。它不会将整个 AWS 或 CloudFront 设为代理。
+
+Figma 官方要求中的 `arkoselabs.com`、`awswaf.com`、`esm.sh`、`jsdelivr.net` 和 `prodregistryv2.org` 也是共享服务，因此这些域名的其他流量同样会走代理。域名清单会随产品更新；第三方插件、自定义网站和外部集成使用的任意域名需另行添加。
 
 ## 维护与校验
 
@@ -114,6 +121,7 @@ python3 scripts/validate.py --check-remote
 - 原始配置：[LingJingMaster/Shadowrocket-Rules](https://github.com/LingJingMaster/Shadowrocket-Rules)。
 - 主要第三方规则：[blackmatrix7/ios_rule_script](https://github.com/blackmatrix7/ios_rule_script)，主配置直接引用其中的 Shadowrocket 规则。
 - Amazon 地区站点参考：[Amazon 全球销售](https://sell.amazon.com/global-selling)与[官方站点列表](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/concepts/common-request-headers-and-parameters)。
+- Figma 域名参考：[官方网络要求](https://help.figma.com/hc/en-us/articles/19424714305943-Adjust-your-network-settings)、[官方新建文件入口](https://help.figma.com/hc/en-us/articles/360038511153-Create-a-new-file)及 [Figma 公开应用配置](https://www.figma.com/login)；资源桶还核对了 AWS 返回的桶区域信息。
 - Apple Intelligence 核心端点参考：[Apple 官方网络要求](https://support.apple.com/101555)。
 
 本仓库使用 [MIT License](LICENSE)，保留原作者版权声明及规则文件中的来源标记。第三方规则的使用还应遵循其来源项目的许可说明。
